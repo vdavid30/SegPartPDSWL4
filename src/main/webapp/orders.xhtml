@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head></h:head>
+
+    <h:body>
+        Proceso en construccion
+        <p:dataTable id="tablaOrdenes"var="orden" value="#{OrdersManagedBean.ordenes}" widgetVar="orderPrm">
+            <p:column headerText="Numero de la orden"></p:column>
+            <h:outputText value ="#{OrdersManagedBean.ordenF}"></h:outputText>
+            <p:column headerText="Numero de items"></p:column>
+        
+        
+        </p:dataTable>
+    </h:body>
+
+</html>
