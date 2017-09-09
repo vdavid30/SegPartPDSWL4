@@ -1,5 +1,6 @@
-package edu.eci.pdsw.examples.model;
+package edu.eci.pdsw.model;
 
+import edu.eci.pdsw.examples.model.ItemOrden;
 import java.util.LinkedList;
 import java.util.List;
 

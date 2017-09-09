@@ -1,6 +1,6 @@
 package edu.eci.pdsw.examples.beans.impl;
 
-import edu.eci.pdsw.examples.model.Orden;
+import edu.eci.pdsw.model.Orden;
 import edu.eci.pdsw.examples.beans.CalculadorCuenta;
 import edu.eci.pdsw.examples.model.ItemOrden;
 

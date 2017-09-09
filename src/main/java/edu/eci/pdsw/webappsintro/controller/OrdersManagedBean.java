@@ -16,24 +16,45 @@
  */
 package edu.eci.pdsw.webappsintro.controller;
 
+import edu.eci.pdsw.model.Orden;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import edu.eci.pdsw.*;
 import edu.eci.pdsw.examples.model.*;
+import java.util.ArrayList;
 /**
  *
  * @author hcadavid
  */
-
+@ManagedBean(name ="ordersManagedBean" )
 public class OrdersManagedBean {
     public List<Orden> ordenes;
     public Orden ordenF;
-    
-    public void crearOrden(){
+    public int nItems;
+    public OrdersManagedBean(){
+        ordenes = new ArrayList<Orden>();
         ordenF = new Orden();
+        ordenF.agregarItemOrden(new Plato("pizza", 7500));
+        Orden ordenA = new Orden();
+        ordenA.agregarItemOrden(new Bebida("pepsi 300ml", 3900,1000));
+        ordenA.agregarItemOrden(new Plato("hamburguesa", 8000));
+        ordenA.agregarItemOrden(new Bebida("sprite 300ml", 200,2000));
+        ordenes.add(ordenF);
+        ordenes.add(ordenA);
+        nItems = (ordenF.getItemsOrden()).size();
     }
-    
+    public void crearOrden(){
+        
+        Orden Norden = new Orden();
+        ordenes.add(Norden);
+    }
+    public List<Orden> getOrdenes(){
+        return ordenes;
+    }
+    public int getNItems(){
+        return nItems;
+    }
     
     
 }

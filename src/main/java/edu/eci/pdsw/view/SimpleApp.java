@@ -8,7 +8,7 @@ package edu.eci.pdsw.view;
 import edu.eci.pdsw.services.ManejadorOrdenesFactory;
 import edu.eci.pdsw.examples.model.Bebida;
 import edu.eci.pdsw.examples.model.ExcepcionManejadorOrdenes;
-import edu.eci.pdsw.examples.model.Orden;
+import edu.eci.pdsw.model.Orden;
 import edu.eci.pdsw.examples.model.Plato;
 import edu.eci.pdsw.examples.services.*;
 
