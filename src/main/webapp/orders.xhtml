@@ -6,16 +6,16 @@
 
     <h:body>
         Proceso en construccion
-        <p:dataTable  var="orden" value="#{ordersManagedBean.ordenes}">
-            <p:column headerText="Numero de la orden">
-                <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>
-            </p:column>
-            <p:column headerText="Numero de items">
-                <h:outputText value ="#{(orden.getItemsOrden()).size()}"/>
-            </p:column>                
-        </p:dataTable>
-        <h:form>
-            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" />
+        <h:form id ="tabla">
+            <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}">
+                <p:column headerText="Numero de la orden">
+                    <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>
+                </p:column>
+                <p:column headerText="Numero de items">
+                    <h:outputText value ="#{(orden.getItemsOrden()).size()}"/>
+                </p:column>                
+            </p:dataTable>        
+            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update="tabla:tablaOrdenes" />
         </h:form>
     </h:body>
 
