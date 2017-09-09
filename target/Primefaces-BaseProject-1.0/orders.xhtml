@@ -6,12 +6,13 @@
 
     <h:body>
         Proceso en construccion
-        <p:dataTable id="tablaOrdenes"var="orden" value="#{OrdersManagedBean.ordenes}" widgetVar="orderPrm">
-            <p:column headerText="Numero de la orden"></p:column>
-            <h:outputText value ="#{OrdersManagedBean.ordenF}"></h:outputText>
-            <p:column headerText="Numero de items"></p:column>
-        
-        
+        <p:dataTable  var="orden" value="#{OrdersManagedBean.ordenes}">
+            <p:column headerText="Numero de la orden">
+                <h:outputText value ="#{OrdersManagedBean.ordenF}"/>
+            </p:column>
+            <p:column headerText="Numero de items">
+                    
+            </p:column>                
         </p:dataTable>
     </h:body>
 

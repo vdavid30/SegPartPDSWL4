@@ -19,11 +19,13 @@ package edu.eci.pdsw.webappsintro.controller;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
+import edu.eci.pdsw.*;
+import edu.eci.pdsw.examples.model.*;
 /**
  *
  * @author hcadavid
  */
+
 public class OrdersManagedBean {
     public List<Orden> ordenes;
     public Orden ordenF;
