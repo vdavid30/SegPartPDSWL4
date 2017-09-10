@@ -44,7 +44,8 @@ public class OrdersManagedBean {
         ordenes.add(ordenA);
         nItems = (ordenF.getItemsOrden()).size();
     }
-    public void crearOrden(){      
+    public void crearOrden(){
+        System.out.println("Se agrego una Orden");
         ordenes.add(new Orden());
     }
     public List<Orden> getOrdenes(){
