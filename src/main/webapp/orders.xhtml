@@ -6,17 +6,46 @@
 
     <h:body>
         Proceso en construccion
-        <h:form id ="tabla">
+        <h:form id ="tabla">           
             
-            <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" >
+            <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" 
+                          selectionMode="single" selection="#{ordersManagedBean.orden}" rowKey="#{orden.getItemsOrden()}">
                 <p:column headerText="Numero de la orden">
-                    <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>
-                </p:column>
+                    <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>                                         
+                </p:column>                
                 <p:column headerText="Numero de items">
                     <h:outputText value ="#{(orden.getItemsOrden()).size()}"/>
                 </p:column>                
-            </p:dataTable>                    
-            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update="@form" />
+            </p:dataTable>     
+            
+            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update="tabla" />  
+            
+            <p:layout style="min-width:400px;min-height:200px;">
+                <p:layoutUnit position="west" resizable="true" size="500" minSize="40" maxSize="2000">            
+                    <p:dataTable  id="tablaItems" var="item" value="#{ordersManagedBean.items}">                       
+                        <p:column headerText="Item">
+                            <h:outputText value ="#{item.getNombre()}"/>                                         
+                        </p:column>
+                        <p:column headerText="Precio">
+                            <h:outputText value ="#{item.getPrecio()}"/>                                         
+                        </p:column>
+                    </p:dataTable>   
+                </p:layoutUnit>
+                <p:layoutUnit position="center" size="500" minSize="40" maxSize="200"> 
+                    <h:outputText value="Valor Total:  "></h:outputText>
+                    <h:outputText value="#{ordersManagedBean.getValorOrden()}"></h:outputText>
+                </p:layoutUnit>
+                <p:layoutUnit position="east" size="500" minSize="40" maxSize="200"> 
+                    <p:commandButton value="Agregar Item" id="ajax2"  actionListener="#{ordersManagedBean.añadirItem}" update="tabla" /> 
+                </p:layoutUnit>
+            </p:layout>
+            <h:outputLabel for="name" value="Nombre    "/>
+            <h:outputLabel value="    Precio"/>
+            <p:splitButton value="Bebida">
+            <p:menuitem value="Plato" />
+            </p:splitButton>
+            
+                      
         </h:form>
     </h:body>
 

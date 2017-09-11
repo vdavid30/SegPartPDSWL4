@@ -7,9 +7,11 @@ import java.util.List;
 public class Orden {
 
 	List<ItemOrden> itemsOrden;
+        int a;
 
 	public Orden() {
 		itemsOrden=new LinkedList<>();
+                a=0;
 	}
 	
 	public void agregarItemOrden(ItemOrden p){

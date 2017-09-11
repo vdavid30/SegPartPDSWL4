@@ -21,28 +21,41 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import edu.eci.pdsw.*;
+import edu.eci.pdsw.examples.beans.impl.CalculadorBasicoCuentas;
 import edu.eci.pdsw.examples.model.*;
 import java.util.ArrayList;
+import java.util.Set;
 /**
  *
  * @author hcadavid
  */
 @ManagedBean(name ="ordersManagedBean" )
+@SessionScoped
+
 public class OrdersManagedBean {
+   
     public List<Orden> ordenes;
-    public Orden ordenF;
+    public Orden ordenF= new Orden();
     public int nItems;
+    public List<ItemOrden> items;
+    public  Orden ordenA = new Orden();
+    public Orden orden;   
+    public CalculadorBasicoCuentas calc= new CalculadorBasicoCuentas();
+    public ItemOrden it= new ItemOrden();
+    
     public OrdersManagedBean(){
-        ordenes = new ArrayList<Orden>();
-        ordenF = new Orden();
-        ordenF.agregarItemOrden(new Plato("pizza", 7500));
-        Orden ordenA = new Orden();
+        ordenes = new ArrayList<Orden>();        
+        ordenF.agregarItemOrden(new Plato("pizza", 7500));       
         ordenA.agregarItemOrden(new Bebida("pepsi 300ml", 3900,1000));
         ordenA.agregarItemOrden(new Plato("hamburguesa", 8000));
         ordenA.agregarItemOrden(new Bebida("sprite 300ml", 200,2000));
         ordenes.add(ordenF);
         ordenes.add(ordenA);
         nItems = (ordenF.getItemsOrden()).size();
+        it.setNombre("prueba");
+        it.setPrecio(1);
+        
+        
     }
     public void crearOrden(){
         System.out.println("Se agrego una Orden");
@@ -53,6 +66,35 @@ public class OrdersManagedBean {
     }
     public int getNItems(){
         return nItems;
+    }
+    
+     public void setA(Orden num){
+        this.orden=num;
+    }
+    
+    public Orden getOrden(){
+        return orden;
+    }
+    
+    public List<ItemOrden> getItems(){
+        items=ordenA.getItemsOrden();
+        return items;
+    }
+    
+    public int getValorOrden (){
+        return calc.calcularCosto(ordenA);
+    }
+    
+    public void setItemNombre(String nom){
+        it.setNombre(nom);
+    }
+    
+    public void setItemPrecio(int pre){
+        it.setPrecio(pre);
+    }
+    
+    public void añadirItem(){
+        ordenA.agregarItemOrden(it);
     }
     
     
