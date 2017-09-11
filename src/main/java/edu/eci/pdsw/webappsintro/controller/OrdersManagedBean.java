@@ -23,6 +23,8 @@ import javax.faces.bean.SessionScoped;
 import edu.eci.pdsw.*;
 import edu.eci.pdsw.examples.beans.impl.CalculadorBasicoCuentas;
 import edu.eci.pdsw.examples.model.*;
+import edu.eci.pdsw.examples.services.ManejadorOrdenes;
+import edu.eci.pdsw.services.ManejadorOrdenesFactory;
 import java.util.ArrayList;
 import java.util.Set;
 /**
@@ -42,15 +44,18 @@ public class OrdersManagedBean {
     public Orden orden;   
     public CalculadorBasicoCuentas calc= new CalculadorBasicoCuentas();
     public ItemOrden it= new ItemOrden();
+    public ManejadorOrdenes calcC;
     
     public OrdersManagedBean(){
-        ordenes = new ArrayList<Orden>();        
+        calcC = ManejadorOrdenesFactory.getInstance().getManejador();
+        ordenes = new ArrayList<Orden>();
+        ordenes = calcC.getOrdenes();
         ordenF.agregarItemOrden(new Plato("pizza", 7500));       
         ordenA.agregarItemOrden(new Bebida("pepsi 300ml", 3900,1000));
         ordenA.agregarItemOrden(new Plato("hamburguesa", 8000));
         ordenA.agregarItemOrden(new Bebida("sprite 300ml", 200,2000));
-        ordenes.add(ordenF);
-        ordenes.add(ordenA);
+        calcC.registrarOrden(ordenF);
+        calcC.registrarOrden(ordenA);        
         nItems = (ordenF.getItemsOrden()).size();
         it.setNombre("prueba");
         it.setPrecio(1);
@@ -58,8 +63,7 @@ public class OrdersManagedBean {
         
     }
     public void crearOrden(){
-        System.out.println("Se agrego una Orden");
-        ordenes.add(new Orden());
+        calcC.registrarOrden(new Orden());
     }
     public List<Orden> getOrdenes(){
         return ordenes;

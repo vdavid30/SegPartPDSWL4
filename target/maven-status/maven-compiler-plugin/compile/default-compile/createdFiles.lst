@@ -1,0 +1,17 @@
+edu\eci\pdsw\examples\model\ExcepcionManejadorOrdenes.class
+edu\eci\pdsw\examples\model\Bebida.class
+verificador\impl\VerificadorIVARegimen2013.class
+edu\eci\pdsw\examples\services\ManejadorOrdenes.class
+edu\eci\pdsw\services\ManejadorOrdenesFactory$1.class
+edu\eci\pdsw\view\SimpleApp.class
+edu\eci\pdsw\examples\beans\impl\CalculadorCuentaConPropina.class
+edu\eci\pdsw\examples\beans\CalculadorCuenta.class
+edu\eci\pdsw\webappsintro\controller\OrdersManagedBean.class
+edu\eci\pdsw\services\ManejadorOrdenesFactory.class
+verificador\impl\VerificadorEstandar.class
+edu\eci\pdsw\examples\model\Plato.class
+edu\eci\pdsw\examples\model\ItemOrden.class
+edu\eci\pdsw\examples\beans\impl\CalculadorCuentaConIva.class
+edu\eci\pdsw\examples\beans\impl\CalculadorBasicoCuentas.class
+verificador\VerificadorIVA.class
+edu\eci\pdsw\model\Orden.class
