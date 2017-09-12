@@ -43,21 +43,22 @@ public class OrdersManagedBean {
     public  Orden ordenA = new Orden();
     public Orden orden;   
     public CalculadorBasicoCuentas calc;
-    public ItemOrden it= new ItemOrden();
+    public ItemOrden it = new ItemOrden();
     public ManejadorOrdenes calcC;
     public String seleccion;
     public String nombre;
     public int precio;
     
-    public OrdersManagedBean(){
+    public OrdersManagedBean(){       
+        seleccion = "AAAA";
         calcC = ManejadorOrdenesFactory.getInstance().getManejador();
         calc= new CalculadorBasicoCuentas();
         ordenes = new ArrayList<Orden>();
         ordenes = calcC.getOrdenes();
-        ordenF.agregarItemOrden(new Plato("pizza", 7500));       
-        ordenA.agregarItemOrden(new Bebida("pepsi 300ml", 3900,1000));
-        ordenA.agregarItemOrden(new Plato("hamburguesa", 8000));
-        ordenA.agregarItemOrden(new Bebida("sprite 300ml", 200,2000));
+        ordenF.agregarItemOrden(new Plato("Pizza", 7500));       
+        ordenA.agregarItemOrden(new Bebida("Pepsi 300ml", 3900,1000));
+        ordenA.agregarItemOrden(new Plato("Hamburguesa", 8000));
+        ordenA.agregarItemOrden(new Bebida("Sprite 300ml", 200,2000));
         ordenA.setNumero(19);
         calcC.registrarOrden(ordenF);
         calcC.registrarOrden(ordenA);        
@@ -76,7 +77,7 @@ public class OrdersManagedBean {
         return nombre;
     }
     public String getSeleccion(){
-        return nombre;
+        return seleccion;
     }
     public int getPrecio(){
         return precio;
@@ -84,8 +85,8 @@ public class OrdersManagedBean {
     public void setNombre(String s){
         this.nombre=s;
     }
-    public void setSeleccion(String s){
-        this.seleccion=s;
+    public void setSeleccion(String seleccion){
+        this.seleccion=seleccion;
     }
     public void setPrecio(int n){
         this.precio=n;
@@ -120,8 +121,11 @@ public class OrdersManagedBean {
     }
     
     public void añadirItem(){
-        it.setNombre(nombre);
-        it.setPrecio(precio);        
+        if(this.seleccion.contains("Bebida")){
+            it = new Bebida(nombre,precio,0);
+        }else if(this.seleccion.contains("Plato")){
+            it = new Plato(nombre,precio);
+        }    
         ordenA.agregarItemOrden(it);
     }
     
@@ -131,6 +135,5 @@ public class OrdersManagedBean {
     
     public Orden getOrdenA(){
         return ordenA;
-    }
-    
+    }    
 }
