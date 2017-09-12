@@ -6,7 +6,7 @@
     <h:head></h:head>
 
     <h:body>
-        Administrador de ordenes
+        <h1>Administrador de Ordenes</h1>
         <h:form id ="tabla">           
             
             <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" 
@@ -18,14 +18,18 @@
                     <h:outputText value ="#{(orden.getItemsOrden()).size()}"/>
                 </p:column>                
 
-            </p:dataTable>     
+            </p:dataTable> 
             
-            <p:commandButton actionListener="#{ordersManagedBean.seleccionarOrdenA()}" value="Seleccionar Orden"  update=":tabla:tablaItems"/>
-            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update=":tabla:tablaOrdenes" /> 
-                       
+            <h3></h3>                            
+                <h:panelGrid columns="2">
+                    <p:commandButton actionListener="#{ordersManagedBean.seleccionarOrdenA()}" value="Seleccionar Orden"  update=":tabla:tablaItems"/>                        
+                    <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update=":tabla:tablaOrdenes" /> 
+                </h:panelGrid>
+                 
             
+            <h2></h2>
             <p:layout style="min-width:400px;min-height:200px;">
-                <p:layoutUnit position="west" resizable="true" size="500" minSize="40" maxSize="2000">            
+                <p:layoutUnit position="west" resizable="true" size="1000" minSize="40" maxSize="2000">            
                     <p:dataTable  id="tablaItems" var="item" value="#{ordersManagedBean.items}">                       
                         <p:column headerText="Item">
                             <h:outputText value ="#{item.getNombre()}"/>                                         
@@ -40,11 +44,9 @@
                     <h:outputText value="#{ordersManagedBean.getValorOrden()}"></h:outputText>
                     
                 </p:layoutUnit>
-                <p:layoutUnit position="east" size="500" minSize="40" maxSize="200"> 
-                    
-                </p:layoutUnit>
+                
             </p:layout>
-            
+            <h2></h2>
             <p:layout style="min-width:400px;min-height:200px;">
                 <p:layoutUnit position="center" size="500" minSize="40" maxSize="200"> 
                     <h:panelGrid columns="2">
