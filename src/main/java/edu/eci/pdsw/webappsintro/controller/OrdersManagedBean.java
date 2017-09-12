@@ -71,7 +71,7 @@ public class OrdersManagedBean {
         calcC.registrarOrden(new Orden());
     }
     public List<Orden> getOrdenes(){
-        return ordenes;
+        return calcC.getOrdenes();
     }
     public String getNombre(){
         return nombre;
@@ -128,9 +128,18 @@ public class OrdersManagedBean {
         }    
         ordenA.agregarItemOrden(it);
     }
-    
+    public void seleccionarOrdenA(){
+        items=ordenA.getItemsOrden();
+        actualizarPrecio();
+    }
+    public void actualizarPrecio(){
+        precio = calc.calcularCosto(ordenA);
+    }
     public void setOrdenA(Orden o){
         ordenA=o;
+    }
+    public void setOrdenA(int nOrden){
+        ordenA = ordenes.get(nOrden);
     }
     
     public Orden getOrdenA(){

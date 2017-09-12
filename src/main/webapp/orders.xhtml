@@ -6,7 +6,7 @@
     <h:head></h:head>
 
     <h:body>
-        Proceso en construccion
+        Administrador de ordenes
         <h:form id ="tabla">           
             
             <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" 
@@ -17,9 +17,11 @@
                 <p:column headerText="Numero de items">
                     <h:outputText value ="#{(orden.getItemsOrden()).size()}"/>
                 </p:column>                
+
             </p:dataTable>     
             
-            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update=":tabla:tablaOrdenes" />  
+            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update=":tabla:tablaOrdenes" /> 
+            <p:commandButton actionListener="#{ordersManagedBean.seleccionarOrdenA()}" value="Seleccionar Orden"  update=":tabla:tablaItems"/>            
             
             <p:layout style="min-width:400px;min-height:200px;">
                 <p:layoutUnit position="west" resizable="true" size="500" minSize="40" maxSize="2000">            
@@ -29,12 +31,13 @@
                         </p:column>
                         <p:column headerText="Precio">
                             <h:outputText value ="#{item.getPrecio()}"/>                                         
-                        </p:column>
+                        </p:column>                        
                     </p:dataTable>   
                 </p:layoutUnit>
                 <p:layoutUnit position="center" size="500" minSize="40" maxSize="200"> 
                     <h:outputText value="Valor Total:  "></h:outputText>
                     <h:outputText value="#{ordersManagedBean.getValorOrden()}"></h:outputText>
+                    
                 </p:layoutUnit>
                 <p:layoutUnit position="east" size="500" minSize="40" maxSize="200"> 
                     
