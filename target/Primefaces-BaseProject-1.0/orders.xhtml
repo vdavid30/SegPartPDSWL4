@@ -10,7 +10,7 @@
         <h:form id ="tabla">           
             
             <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" 
-                          selectionMode="single" selection="#{ordersManagedBean.orden}" rowKey="#{orden.getItemsOrden()}">
+                          selectionMode="single" selection="#{ordersManagedBean.getOrden(ordersManagedBean.ordenes.indexOf(orden)+1)}" rowKey="#{orden.getItemsOrden()}">
                 <p:column headerText="Numero de la orden">
                     <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>                                         
                 </p:column>                
@@ -19,7 +19,7 @@
                 </p:column>                
             </p:dataTable>     
             
-            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update="tabla" />  
+            <p:commandButton value="Agregar Orden" id="ajax"  actionListener="#{ordersManagedBean.crearOrden}" update=":tabla:tablaOrdenes" />  
             
             <p:layout style="min-width:400px;min-height:200px;">
                 <p:layoutUnit position="west" resizable="true" size="500" minSize="40" maxSize="2000">            

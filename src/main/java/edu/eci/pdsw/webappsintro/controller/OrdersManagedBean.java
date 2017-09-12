@@ -42,12 +42,13 @@ public class OrdersManagedBean {
     public List<ItemOrden> items;
     public  Orden ordenA = new Orden();
     public Orden orden;   
-    public CalculadorBasicoCuentas calc= new CalculadorBasicoCuentas();
+    public CalculadorBasicoCuentas calc;
     public ItemOrden it= new ItemOrden();
     public ManejadorOrdenes calcC;
     
     public OrdersManagedBean(){
         calcC = ManejadorOrdenesFactory.getInstance().getManejador();
+        calc= new CalculadorBasicoCuentas();
         ordenes = new ArrayList<Orden>();
         ordenes = calcC.getOrdenes();
         ordenF.agregarItemOrden(new Plato("pizza", 7500));       
@@ -76,8 +77,8 @@ public class OrdersManagedBean {
         this.orden=num;
     }
     
-    public Orden getOrden(){
-        return orden;
+    public Orden getOrden(int n) throws ExcepcionManejadorOrdenes{
+        return calcC.consultarOrden(n);
     }
     
     public List<ItemOrden> getItems(){
