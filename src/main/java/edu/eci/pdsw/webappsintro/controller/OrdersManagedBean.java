@@ -48,6 +48,7 @@ public class OrdersManagedBean {
     public String seleccion;
     public String nombre;
     public int precio;
+    public int numero=3;
     
     public OrdersManagedBean(){       
         seleccion = "AAAA";
@@ -68,7 +69,10 @@ public class OrdersManagedBean {
         
     }
     public void crearOrden(){
-        calcC.registrarOrden(new Orden());
+        numero+=1;
+        Orden or=new Orden();
+        or.setNumero(numero);
+        calcC.registrarOrden(or);        
     }
     public List<Orden> getOrdenes(){
         return calcC.getOrdenes();
@@ -122,11 +126,12 @@ public class OrdersManagedBean {
     
     public void añadirItem(){
         if(this.seleccion.contains("Bebida")){
-            it = new Bebida(nombre,precio,0);
+            it = new Bebida(nombre,precio,0);           
         }else if(this.seleccion.contains("Plato")){
-            it = new Plato(nombre,precio);
+            it = new Plato(nombre,precio);            
         }    
         ordenA.agregarItemOrden(it);
+        System.out.print(seleccion);
     }
     public void seleccionarOrdenA(){
         items=ordenA.getItemsOrden();
