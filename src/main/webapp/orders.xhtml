@@ -10,7 +10,7 @@
         <h:form id ="tabla">           
             
             <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" 
-                          selectionMode="single" selection="#{ordersManagedBean.getOrden(ordersManagedBean.ordenes.indexOf(orden)+1)}" rowKey="#{orden.getItemsOrden()}">
+                          selectionMode="single" selection="#{ordersManagedBean.ordenA}" rowKey="#{orden.getNumero()}">                
                 <p:column headerText="Numero de la orden">
                     <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>                                         
                 </p:column>                

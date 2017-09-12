@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Orden {
+        public int numero;
 
 	List<ItemOrden> itemsOrden;
         int a;
@@ -26,5 +27,12 @@ public class Orden {
 	public String toString(){
 		return itemsOrden.toString();
 	}
-	
+        
+        public void setNumero(int num){
+            numero=num;
+        }
+        
+        public int getNumero(){
+            return numero;
+        }
 }

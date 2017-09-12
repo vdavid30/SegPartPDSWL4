@@ -55,6 +55,7 @@ public class OrdersManagedBean {
         ordenA.agregarItemOrden(new Bebida("pepsi 300ml", 3900,1000));
         ordenA.agregarItemOrden(new Plato("hamburguesa", 8000));
         ordenA.agregarItemOrden(new Bebida("sprite 300ml", 200,2000));
+        ordenA.setNumero(19);
         calcC.registrarOrden(ordenF);
         calcC.registrarOrden(ordenA);        
         nItems = (ordenF.getItemsOrden()).size();
@@ -102,5 +103,12 @@ public class OrdersManagedBean {
         ordenA.agregarItemOrden(it);
     }
     
+    public void setOrdenA(Orden o){
+        ordenA=o;
+    }
+    
+    public Orden getOrdenA(){
+        return ordenA;
+    }
     
 }
