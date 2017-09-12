@@ -10,7 +10,7 @@
         <h:form id ="tabla">           
             
             <p:dataTable  id="tablaOrdenes" var="orden" value="#{ordersManagedBean.ordenes}" 
-                          selectionMode="single" selection="#{ordersManagedBean.getOrden(ordersManagedBean.ordenes.indexOf(orden)+1)}" rowKey="#{orden.getItemsOrden()}">
+                          selectionMode="single" selection="#{ordersManagedBean.ordenA}" rowKey="#{orden.getNumero()}">                
                 <p:column headerText="Numero de la orden">
                     <h:outputText value ="#{(ordersManagedBean.ordenes.indexOf(orden))+1}"/>                                         
                 </p:column>                
@@ -45,15 +45,15 @@
                 <p:layoutUnit position="center" size="500" minSize="40" maxSize="200"> 
                     <h:panelGrid columns="2">
                         <h:outputLabel for="name" value="Nombre    "/>
-                        <p:inputText />
+                        <p:inputText  id="nombrePlato" value="#{ordersManagedBean.nombre}"/>
                         <h:outputLabel value="    Precio"/>
-                        <p:inputText />
-                         <p:selectOneButton value="boton">
+                        <p:inputText id="precioPlato" value="#{ordersManagedBean.precio}" />
+                         <p:selectOneButton value="#{ordersManagedBean.seleccion}" id="seleccion" >
                             <f:selectItem itemLabel="Bebida" itemValue="Bebida" />
                             <f:selectItem itemLabel="Plato" itemValue="Plato" />                           
                         </p:selectOneButton>
                         <p:outputLabel/>
-                        <p:commandButton value="Agregar Item" id="ajax2"  actionListener="#{ordersManagedBean.añadirItem}" update="tabla" /> 
+                        <p:commandButton value="Agregar Item" id="ajax2"  actionListener="#{ordersManagedBean.añadirItem()}" update="tabla" /> 
                     </h:panelGrid>
                 </p:layoutUnit>
             </p:layout>

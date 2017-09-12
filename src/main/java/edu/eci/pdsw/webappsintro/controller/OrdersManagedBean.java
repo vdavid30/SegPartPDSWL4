@@ -45,6 +45,9 @@ public class OrdersManagedBean {
     public CalculadorBasicoCuentas calc;
     public ItemOrden it= new ItemOrden();
     public ManejadorOrdenes calcC;
+    public String seleccion;
+    public String nombre;
+    public int precio;
     
     public OrdersManagedBean(){
         calcC = ManejadorOrdenesFactory.getInstance().getManejador();
@@ -59,8 +62,7 @@ public class OrdersManagedBean {
         calcC.registrarOrden(ordenF);
         calcC.registrarOrden(ordenA);        
         nItems = (ordenF.getItemsOrden()).size();
-        it.setNombre("prueba");
-        it.setPrecio(1);
+        
         
         
     }
@@ -69,6 +71,24 @@ public class OrdersManagedBean {
     }
     public List<Orden> getOrdenes(){
         return ordenes;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public String getSeleccion(){
+        return nombre;
+    }
+    public int getPrecio(){
+        return precio;
+    }
+    public void setNombre(String s){
+        this.nombre=s;
+    }
+    public void setSeleccion(String s){
+        this.seleccion=s;
+    }
+    public void setPrecio(int n){
+        this.precio=n;
     }
     public int getNItems(){
         return nItems;
@@ -100,6 +120,8 @@ public class OrdersManagedBean {
     }
     
     public void añadirItem(){
+        it.setNombre(nombre);
+        it.setPrecio(precio);        
         ordenA.agregarItemOrden(it);
     }
     
